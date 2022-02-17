@@ -30,9 +30,10 @@ const startApolloServer = async (app, httpServer) => {
     typeDefs,
     resolvers,
     plugins: [
-      ApolloServerPluginLandingPageGraphQLPlayground({ httpServer }),
+      ApolloServerPluginLandingPageGraphQLPlayground(),
       ApolloServerPluginDrainHttpServer({ httpServer }),
     ],
+    introspection: true,
   });
 
   await server.start();
