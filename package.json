@@ -4,7 +4,8 @@
   "description": "",
   "main": "./graphql/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development nodemon dev"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,9 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "graphql": "^16.3.0"
+  },
+  "devDependencies": {
+    "consola": "^2.15.3",
+    "nodemon": "^2.0.15"
   }
 }

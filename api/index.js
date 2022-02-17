@@ -2,6 +2,7 @@ import { ApolloServer, gql } from "apollo-server-express";
 import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageGraphQLPlayground,
+  ApolloServerPluginLandingPageProductionDefault,
 } from "apollo-server-core";
 import http from "http";
 import express from "express";
@@ -29,8 +30,9 @@ const startApolloServer = async (app, httpServer) => {
     typeDefs,
     resolvers,
     plugins: [
-      ApolloServerPluginLandingPageGraphQLPlayground(),
-      ApolloServerPluginDrainHttpServer({ httpServer }),
+      process.env.NODE_ENV === "development"
+        ? ApolloServerPluginLandingPageGraphQLPlayground
+        : ApolloServerPluginLandingPageProductionDefault({ footer: false }),
     ],
   });
 
